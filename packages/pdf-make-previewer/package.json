@@ -1,6 +1,6 @@
 {
   "name": "pdf-make-previewer",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist"],
@@ -8,7 +8,7 @@
     "pdf-make-previewer": "dist/index.js"
   },
   "scripts": {
-    "build": "tsup --config tsup.config.ts --dts-resolve",
+    "build": "tsup --config tsup.config.ts --dts",
     "dev": "tsc --watch"
   },
   "keywords": [],
