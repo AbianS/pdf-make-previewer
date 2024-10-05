@@ -1,0 +1,7 @@
+{
+  "title": "Fumadocs MDX",
+  "description": "The official content source",
+  "icon": "Pencil",
+  "root": true,
+  "pages": ["---Guide---", "index", "..."]
+}

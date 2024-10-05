@@ -1,0 +1,40 @@
+{
+  "name": "pdf-make-previewer",
+  "version": "0.1.4",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "bin": {
+    "pdf-make-previewer": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup --config tsup.config.ts --dts-resolve",
+    "dev": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "AbianS",
+  "description": "CLI and library to visualize your PDF generation in real-time.",
+  "license": "MIT",
+  "repository": "https://github.com/AbianS/pdf-make-preview",
+  "homepage": "https://pdf-make-preview.vercel.app/",
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/madge": "^5.0.3",
+    "@types/pdfmake": "^0.2.9",
+    "@types/prompts": "^2.4.9",
+    "esbuild-plugin-copy": "^2.1.1",
+    "tsup": "^8.3.0"
+  },
+  "dependencies": {
+    "bundle-require": "^5.0.0",
+    "cac": "^6.7.14",
+    "chokidar": "^4.0.1",
+    "esbuild": "^0.24.0",
+    "express": "^4.21.0",
+    "joycon": "^3.1.1",
+    "madge": "^8.0.0",
+    "ora": "5.0.0",
+    "picocolors": "^1.1.0",
+    "prompts": "^2.4.2"
+  }
+}

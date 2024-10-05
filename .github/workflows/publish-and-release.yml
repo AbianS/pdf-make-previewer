@@ -1,0 +1,45 @@
+name: Publish and Create Release
+on:
+    push:
+      tags:
+        - 'v*'
+
+permissions:
+  contents: write  
+
+jobs:
+  publish_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Build
+        run: pnpm build
+      
+      - name: Publish to npm
+        run: pnpm --filter pdf-make-previewer publish --access publish --no-git-check
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes

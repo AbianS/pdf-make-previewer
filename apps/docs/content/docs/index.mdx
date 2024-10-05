@@ -1,0 +1,54 @@
+---
+title: 🚀 Quick Start
+description: A powerful library for PDF preview.
+---
+
+Thank you for choosing **pdf-make-previewer** to streamline your PDF visualization process. This tool provides both a CLI and a library to make previewing your PDFs fast and seamless. Below is a guide to help you get started!
+
+## 💡 Motivation
+The motivation behind **pdf-make-previewer** stems from the frustration of repeatedly having to generate and open PDFs just to visualize changes during the development process. It becomes a tedious task to modify your PDF logic, generate the file, and manually open it every single time to see the result.
+
+**pdf-make-previewer** was built to solve this problem. Instead of generating a PDF file over and over, this tool **automatically visualizes your PDF changes in real time**. It removes the hassle and provides a smooth development experience, allowing you to focus on writing your PDF generation logic while immediately seeing the results in a live preview.
+## 🎯 CLI - Quick Setup
+
+The **CLI** allows you to set up your project quickly and effortlessly.
+
+```bash
+npx pdf-make-previewer init
+```
+
+This command will guide you through the process of setting up your project. It will ask you a series of questions to ensure a smooth installation.
+
+
+## 📄 Step 2: Update Your Configuration File
+
+Once initialized, open the generated configuration file (`pdf-previewer.config.ts` or `pdf-previewer.config.mjs`). This is where you'll import your existing pdfmake functions and set up the logic for PDF generation.
+
+Example:
+```ts
+// pdf-previewer.config.ts
+
+import type { PdfPreviewerConfig } from "pdf-make-previewer"
+import { generatePDF } from './your-pdf-functions';
+
+const config: PdfPreviewerConfig = {
+  renderPdfPreview: () => generatePDF({name: 'John Doe', age: 30}),
+}
+
+export default config
+```
+
+## 🚀 Step 3: Run the Preview
+
+To start using **pdf-make-previewer**, simply run:
+
+```bash
+npm run preview
+```
+
+This will open a local server where you can instantly preview any changes made to your PDF generation logic. Make your edits, save the file, and the preview will automatically update in real time. 🔄✨
+
+## 🚧 Early Stage Development & Open to Contributions 🚧
+**pdf-make-previewer** is in its early stages of development, aimed at simplifying PDF visualization during development by offering real-time previews. While it's already useful, many exciting features and improvements are planned, including more functionality and performance enhancements to further streamline the PDF workflow. 🚀
+
+The project is open-source and welcomes contributions! Whether you want to suggest features, report bugs, or contribute code, we encourage you to get involved and help shape the future of **pdf-make-previewer**. Together, we can make it an even better tool for developers working with PDFs. 💪
