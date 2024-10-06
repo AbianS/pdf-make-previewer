@@ -5,8 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"],
-      "cache": false
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -15,8 +14,13 @@
       "cache": false,
       "persistent": true
     },
+    "pdf-render#build": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
     "pdf-make-previewer#build": {
-      "dependsOn": ["pdf-render#build"]
+      "dependsOn": ["pdf-render#build"],
+      "cache": false
     }
   }
 }

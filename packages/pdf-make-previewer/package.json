@@ -11,11 +11,21 @@
     "build": "tsup --config tsup.config.ts --dts",
     "dev": "tsc --watch"
   },
-  "keywords": [],
+  "keywords": [
+    "pdf",
+    "pdfmake",
+    "preview",
+    "pdf-make-preview",
+    "pdfmake-preview",
+    "previewer",
+    "live-pdf-preview",
+    "live-pdf-make-preview",
+    "live-pdfmake-preview"
+  ],
   "author": "AbianS",
   "description": "CLI and library to visualize your PDF generation in real-time.",
   "license": "MIT",
-  "repository": "https://github.com/AbianS/pdf-make-preview",
+  "repository": "https://github.com/AbianS/pdf-make-previewer",
   "homepage": "https://pdf-make-preview.vercel.app/",
   "devDependencies": {
     "@types/express": "^4.17.17",

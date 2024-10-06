@@ -28,6 +28,9 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Copy README.md to package directory
+        run: cp README.md packages/pdf-make-previewer/README.md
       
       - name: Publish to npm
         run: pnpm --filter pdf-make-previewer publish --access publish --no-git-check

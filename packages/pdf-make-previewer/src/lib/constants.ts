@@ -32,3 +32,10 @@ export default config
 `,
   },
 } as const
+
+export const CONFIG_FILES = [
+  "pdf-previewer.config.ts",
+  "pdf-previewer.config.js",
+  "pdf-previewer.config.mjs",
+  "pdf-previewer.config.cjs",
+]

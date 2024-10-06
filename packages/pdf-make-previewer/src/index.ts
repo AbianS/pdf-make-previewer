@@ -8,7 +8,7 @@ import { createServer } from "./core/server"
 import type { SharedData } from "./core/types"
 import { getConfig } from "./lib/builder"
 import { VERSION } from "./lib/constants"
-import { getFilesToWatch } from "./lib/utils"
+import { findCondfigFile, getFilesToWatch } from "./lib/utils"
 import { performance } from "node:perf_hooks"
 import colors from "picocolors"
 import { initProject } from "./core/init"
@@ -16,7 +16,7 @@ import { initProject } from "./core/init"
 export { PdfPreviewerConfig } from "./core/types"
 
 interface CliOptions {
-  config: string
+  config?: string
   port: number
 }
 
@@ -33,13 +33,23 @@ cli
 cli
   .command("[root]", "Start the server")
   .option("-c, --config <file>", "[string] Path to the config file", {
-    default: "pdf-previewer.config.ts",
+    default: undefined,
   })
   .option("-p, --port <number>", "[number] Port to listen on (default: 4000)", {
     default: 4000,
   })
   .action(async (root: string, options: CliOptions) => {
-    const configPath = path.resolve(process.cwd(), options.config)
+    const configPath = options.config
+      ? path.resolve(process.cwd(), options.config)
+      : findCondfigFile(process.cwd())
+
+    if (!configPath) {
+      console.log(
+        `${colors.green(`${colors.bold("[PDF MAKE PREVIEWER]")}`)} ${colors.red("No config file found")}\n`,
+      )
+      process.exit(1)
+    }
+
     const startTime = performance.now()
 
     const server = createServer(configPath, options.port, clients)
@@ -63,7 +73,15 @@ cli
         watcher.add(updatedFilesToWatch)
 
         const config = await getConfig(process.cwd(), options.config)
-        const functionString = config?.renderPdfPreview()
+
+        if (!config) {
+          console.log(
+            `  ${colors.green(`${colors.bold("[PDF MAKE PREVIEWER]")}`)} ${colors.red("No config file found or invalid config file")}\n`,
+          )
+          process.exit(1)
+        }
+
+        const functionString = config.renderPdfPreview()
 
         const sharedData: SharedData = {
           previewData: functionString,
