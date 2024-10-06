@@ -26,7 +26,15 @@ export function createServer(
     clients.push(res)
 
     const config = await getConfig(process.cwd(), configPath)
-    const functionString = config?.renderPdfPreview()
+
+    if (!config) {
+      console.log(
+        `${colors.green(`${colors.bold("[PDF MAKE PREVIEWER]")}`)} ${colors.red("No config file found or invalid config file")}\n`,
+      )
+      process.exit(1)
+    }
+
+    const functionString = config.renderPdfPreview()
 
     const initialData: SharedData = {
       previewData: functionString,
@@ -36,7 +44,7 @@ export function createServer(
     res.write(`data: ${JSON.stringify(initialData)}\n\n`)
 
     console.log(
-      `  ${colors.green(`${colors.bold("[PDF MAKE PREVIEWER]")}`)} ${colors.cyan("Client connect 👋")}`,
+      `  ${colors.green(`${colors.bold("[PDF MAKE PREVIEWER]")}`)} ${colors.cyan("client connect 👋")}`,
     )
 
     req.on("close", () => {

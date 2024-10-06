@@ -48,7 +48,7 @@ export default config
 To start using pdf-make-previewer, run:
 
 ```bash
-npm run previewer
+npm run preview
 ```
 
 This will open a local server where you can instantly preview any changes made to your PDF generation logic. Make your edits, save the file, and the preview will automatically update in real time. 🔄✨
