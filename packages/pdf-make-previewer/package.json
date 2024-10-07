@@ -1,6 +1,6 @@
 {
   "name": "pdf-make-previewer",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist"],
@@ -42,7 +42,7 @@
     "esbuild": "^0.24.0",
     "express": "^4.21.0",
     "joycon": "^3.1.1",
-    "madge": "^8.0.0",
+    "madge": "^7.0.0",
     "ora": "5.0.0",
     "picocolors": "^1.1.0",
     "prompts": "^2.4.2"
