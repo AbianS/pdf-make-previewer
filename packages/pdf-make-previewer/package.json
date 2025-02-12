@@ -39,7 +39,7 @@
     "bundle-require": "^5.0.0",
     "cac": "^6.7.14",
     "chokidar": "^4.0.1",
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.25.0",
     "express": "^4.21.0",
     "joycon": "^3.1.1",
     "madge": "^7.0.0",
